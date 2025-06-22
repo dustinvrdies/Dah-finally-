@@ -1,5 +1,6 @@
 PLUGINS_FOLDER = "plugins"
-PLUGINS = {}from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+PLUGINS = {}
+from flask import Flask, render_template, request, redirect, url_for, session, jsonify
 if os.path.exists(PLUGINS_FOLDER):
     for file in os.listdir(PLUGINS_FOLDER):
         if file.endswith(".py"):
