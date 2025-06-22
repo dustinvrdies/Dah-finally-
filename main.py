@@ -1,5 +1,11 @@
-from flask import Flask, render_template, request, redirect, url_for, session, jsonify
-import os, importlib
+PLUGINS_FOLDER = "plugins"
+PLUGINS = {}from flask import Flask, render_template, request, redirect, url_for, session, jsonify
+if os.path.exists(PLUGINS_FOLDER):
+    for file in os.listdir(PLUGINS_FOLDER):
+        if file.endswith(".py"):
+            module_name = file[:-3]
+            module = importlib.import_module(f"{PLUGINS_FOLDER}.{module_name}")
+            PLUGINS[module_name] = moduleimport os, importlib
 from wallet import get_wallet, update_balance
 for file in os.listdir(PLUGINS_FOLDER):
     if file.endswith(".py"):
