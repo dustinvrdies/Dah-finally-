@@ -1,0 +1,5 @@
+for file in os.listdir(PLUGINS_FOLDER):
+    if file.endswith(".py"):
+        module_name = file[:-3]
+        module = importlib.import_module(f"{PLUGINS_FOLDER}.{module_name}")
+        PLUGINS[module_name] = module
